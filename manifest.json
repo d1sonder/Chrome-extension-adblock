@@ -1,0 +1,26 @@
+{
+    "name": "adblocker",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "adblocker for everyone who need to block ads, dude",
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "<all_urls>",
+        "storage"
+    ],
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+    },
+    "web_accessible_resources": [
+        "popup.js"
+    ],
+    "icons": {
+        "16": "img/16px.png",
+        "48": "img/48px.png"
+    }
+}

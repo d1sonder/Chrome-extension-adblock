@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: rgb(255, 255, 255);
+            font-family: arial;
+            width: 200px;
+            text-align: center;
+        }
+        .switch{
+            display:  inline-block;
+            position: relative;
+            width: 60px;
+            height: 34px;
+            background-color: rgb(255, 255, 255);
+        }
+        .switch-input{
+            height: 0;
+            width: 0;
+            opacity: 0;
+        }
+        .switch-slider{
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: gray;
+            border-radius: 20px;
+            transition: 0.5s;
+        }
+        .switch-slider:before{
+            content: "";
+            position: absolute;
+            cursor: pointer;
+            left: 2px;
+            bottom: 2px;
+
+            height: 30px;
+            width: 30px;
+            border-radius: 20px;
+            background-color: rgb(255, 255, 255);
+            transition: 0.5s;
+        }
+        .switch-input + .switch-slider{
+            box-shadow: 0 0 1px black;
+        }
+        .switch-input:checked + .switch-slider{
+            background-color: rgb(47, 163, 47);
+        }
+        .switch-input:checked + .switch-slider:before{
+            transform: translateX(26px);
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+        }
+        
+    </style>
+    <title>adblocker</title>
+</head>
+<body>
+    <h1>ADBLOCK</h1>
+    <form> 
+        <label for="blockRequest" class="switch">
+        <input type="checkbox" id="blockRequest" name="blockRequest" value="block" class="switch-input">
+            <span class="switch-slider"></span>
+    </label>
+    </form>
+    <script src="popup.js"></script>
+</body>
+</html>
