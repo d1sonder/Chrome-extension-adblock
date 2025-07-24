@@ -104,4 +104,4 @@ Telegram: @d1sonder
 
 Багрепорты: Issues
 
-© 2025 Advanced AdBlocker | v1.1 | MIT License
+© 2025 Advanced AdBlocker | v1.1 
