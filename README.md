@@ -103,5 +103,5 @@ Email: artyom17718@mail.ru
 Telegram: @d1sonder
 
 Багрепорты: Issues
-
-© 2025 Advanced AdBlocker | v1.1 
+______
+<div align="center">  © 2025 Advanced AdBlocker | v1.1 </div>
