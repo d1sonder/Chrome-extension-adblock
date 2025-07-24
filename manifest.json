@@ -1,24 +1,32 @@
 {
-    "name": "adblocker",
-    "version": "1.0",
-    "manifest_version": 2,
-    "description": "adblocker for everyone who need to block ads, dude",
+    "name": "Advanced AdBlocker",
+    "version": "1.1",
+    "manifest_version": 3,
+    "description": "Blocks banners, Flash ads and hides ad containers",
     "permissions": [
-        "webRequest",
-        "webRequestBlocking",
-        "<all_urls>",
-        "storage"
+        "declarativeNetRequest",
+        "declarativeNetRequestWithHostAccess",
+        "storage",
+        "scripting",
+        "activeTab"
     ],
-    "browser_action": {
-        "default_popup": "popup.html"
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "img/16px.png",
+            "48": "img/48px.png"
+        }
     },
     "background": {
-        "scripts": ["background.js"],
-        "persistent": true
+        "service_worker": "background.js"
     },
-    "web_accessible_resources": [
-        "popup.js"
-    ],
+    "web_accessible_resources": [{
+        "resources": ["empty.html"],
+        "matches": ["<all_urls>"]
+    }],
     "icons": {
         "16": "img/16px.png",
         "48": "img/48px.png"

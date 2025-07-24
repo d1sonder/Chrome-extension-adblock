@@ -1,74 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdBlocker</title>
     <style>
-        body{
-            background-color: rgb(255, 255, 255);
-            font-family: arial;
-            width: 200px;
-            text-align: center;
-        }
-        .switch{
-            display:  inline-block;
+        body { width: 200px; padding: 10px; font-family: Arial; }
+        .switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 25px; }
+        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: #2196F3; }
+        input:checked + .slider:before { transform: translateX(26px); }
+        #hideBtn {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
             position: relative;
-            width: 60px;
-            height: 34px;
-            background-color: rgb(255, 255, 255);
-        }
-        .switch-input{
-            height: 0;
-            width: 0;
-            opacity: 0;
-        }
-        .switch-slider{
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background-color: gray;
-            border-radius: 20px;
-            transition: 0.5s;
-        }
-        .switch-slider:before{
-            content: "";
-            position: absolute;
-            cursor: pointer;
-            left: 2px;
-            bottom: 2px;
-
-            height: 30px;
-            width: 30px;
-            border-radius: 20px;
-            background-color: rgb(255, 255, 255);
-            transition: 0.5s;
-        }
-        .switch-input + .switch-slider{
-            box-shadow: 0 0 1px black;
-        }
-        .switch-input:checked + .switch-slider{
-            background-color: rgb(47, 163, 47);
-        }
-        .switch-input:checked + .switch-slider:before{
-            transform: translateX(26px);
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
+            overflow: hidden;
         }
         
+        #hideBtn:active {
+            transform: scale(0.95);
+        }
+        
+        #hideBtn.loading::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 16px;
+            height: 16px;
+            margin: -8px 0 0 -8px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        #hideBtn.success {
+            background: #2196F3;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
-    <title>adblocker</title>
 </head>
 <body>
-    <h1>ADBLOCK</h1>
-    <form> 
-        <label for="blockRequest" class="switch">
-        <input type="checkbox" id="blockRequest" name="blockRequest" value="block" class="switch-input">
-            <span class="switch-slider"></span>
+    <h3>AdBlocker</h3>
+    
+    <label class="switch">
+        <input type="checkbox" id="toggle">
+        <span class="slider"></span>
     </label>
-    </form>
+    <span id="status" style="text-align: right; color: #2196F3; font-size: 100%; vertical-align: -40%;">Enabled</span>
+
+      <button id="hideBtn">Hide Banners</button>
+
     <script src="popup.js"></script>
 </body>
 </html>
